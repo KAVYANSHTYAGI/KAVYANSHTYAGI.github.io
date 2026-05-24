@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kavyansh Tyagi</title>
+  <meta name="description" content="ML Researcher. Mamba nerd. Calculus enjoyer. Building things that shouldn't work but do.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --ink: #111010;
+      --ink2: #3a3835;
+      --ink3: #7a7672;
+      --paper: #fafaf8;
+      --paper2: #f2f1ed;
+      --paper3: #e8e6e0;
+      --rule: #dddad3;
+      --red: #c0392b;
+      --blue: #1a4a8a;
+      --green: #1a6645;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--blue); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 99;
+      background: rgba(250,250,248,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 0;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink2);
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .narrow { max-width: 720px; }
+
+    section { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(52px, 8vw, 96px);
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--ink2);
+    }
+    .hero-bio {
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--ink2);
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .hero-bio strong { font-weight: 500; color: var(--ink); }
+    .hero-note {
+      font-size: 14px;
+      color: var(--ink3);
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border: 1.5px solid var(--rule);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink2);
+      background: var(--paper);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      text-decoration: none;
+    }
+    .pill:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: var(--paper2);
+    }
+    .pill.solid {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .pill.solid:hover { background: var(--ink2); border-color: var(--ink2); color: var(--paper); }
+
+    /* ── SECTION HEADERS ── */
+    .sec-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      font-weight: 500;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .sec-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    h2 em { font-style: italic; color: var(--ink2); }
+    .sec-desc {
+      font-size: 15px;
+      color: var(--ink3);
+      max-width: 520px;
+      margin-bottom: 52px;
+      line-height: 1.7;
+    }
+
+    /* ── RESEARCH CARDS ── */
+    .research-list { display: flex; flex-direction: column; gap: 0; }
+    .research-item {
+      padding: 32px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 0 28px;
+      align-items: start;
+    }
+    .research-item:last-child { border-bottom: 1px solid var(--rule); }
+    .r-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 13px;
+      color: var(--ink3);
+      padding-top: 4px;
+    }
+    .r-body {}
+    .r-where {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .r-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      letter-spacing: -0.3px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .r-desc {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.75;
+      max-width: 620px;
+    }
+    .r-desc + .r-desc { margin-top: 8px; }
+    .r-status {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .status-active { background: #e8f5ee; color: var(--green); }
+    .status-review { background: #fff4e5; color: #a05a00; }
+    .status-pub { background: #e8eef8; color: var(--blue); }
+
+    /* ── BUILDING SECTION ── */
+    .build-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .build-card {
+      padding: 36px 32px;
+      background: var(--paper);
+      transition: background 0.2s;
+    }
+    .build-card:hover { background: var(--paper2); }
+    .build-card.featured {
+      grid-column: span 2;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .bc-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink3);
+      margin-bottom: 16px;
+    }
+    .bc-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 26px;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .bc-desc {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .bc-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .bc-link:hover { color: var(--ink); }
+    .bc-details { list-style: none; }
+    .bc-details li {
+      font-size: 13px;
+      color: var(--ink2);
+      padding: 7px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      line-height: 1.6;
+    }
+    .bc-details li:last-child { border-bottom: none; }
+    .bc-details li::before { content: '→'; color: var(--ink3); font-size: 12px; flex-shrink: 0; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-item {
+      padding: 28px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+    }
+    .pub-item:last-child { border-bottom: 1px solid var(--rule); }
+    .pub-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .pub-meta {
+      font-size: 13px;
+      color: var(--ink3);
+      margin-bottom: 8px;
+    }
+    .pub-desc {
+      font-size: 13px;
+      color: var(--ink2);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+    .pub-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .badge-cvpr { background: #eef2ff; color: #3730a3; }
+    .badge-review { background: #fef9ec; color: #92400e; }
+    .badge-accepted { background: #f0fdf4; color: #166534; }
+
+    /* ── OSS ── */
+    .oss-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-bottom: 1px;
+    }
+    .oss-card {
+      background: var(--paper);
+      padding: 28px 30px;
+      transition: background 0.2s;
+    }
+    .oss-card:hover { background: var(--paper2); }
+    .oss-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .oss-pr {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+    }
+    .oss-card p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.7;
+    }
+    .oss-card a { color: var(--blue); font-weight: 500; }
+
+    /* ── SKILLS ── */
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    .skill-group h4 {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink3);
+      margin-bottom: 14px;
+    }
+    .skill-group p {
+      font-size: 14px;
+      color: var(--ink2);
+      line-height: 1.8;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 16px;
+      color: var(--ink2);
+      line-height: 1.9;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .about-text p strong { color: var(--ink); font-weight: 500; }
+    .about-text p em { font-style: italic; }
+    .about-facts { }
+    .fact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 14px;
+    }
+    .fact-row:first-child { border-top: 1px solid var(--rule); }
+    .fact-label { color: var(--ink3); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; }
+    .fact-value { color: var(--ink); font-weight: 400; text-align: right; max-width: 200px; }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 64px;
+      align-items: center;
+    }
+    .contact-text h2 { margin-bottom: 16px; }
+    .contact-text p {
+      font-size: 16px;
+      color: var(--ink2);
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    .contact-item {
+      font-size: 13px;
+      color: var(--ink3);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+    .contact-item span { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .contact-item a { color: var(--ink); font-weight: 500; font-size: 15px; }
+    .contact-item a:hover { color: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--ink3);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .wrap { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding-top: 100px; }
+      .research-item { grid-template-columns: 1fr; gap: 8px; }
+      .r-num { display: none; }
+      .build-grid { grid-template-columns: 1fr; }
+      .build-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .oss-row { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+      .contact-links { align-items: flex-start; }
+      .contact-item { align-items: flex-start; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+      .pub-item { grid-template-columns: 1fr; }
+      .hero h1 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-name">Kavyansh Tyagi</span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#building">Building</a></li>
+        <li><a href="#publications">Papers</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero wrap">
+    <p class="hero-eyebrow fade-up">ML Researcher · NIT Kurukshetra · Class of 2027</p>
+    <h1 class="fade-up delay-1">I think in<br><em>derivatives.</em></h1>
+    <p class="hero-bio fade-up delay-2">
+      Second-year undergrad who got hooked on calculus and never looked back.
+      I work on <strong>state-space models</strong>, <strong>hyperspectral vision</strong>, and <strong>efficient sequence modeling</strong> —
+      the kind of research where you spend three weeks on a gradient and then it suddenly works at 2 a.m.
+    </p>
+    <p class="hero-note fade-up delay-2">
+      Currently collaborating with two universities across continents, interning at a startup, and somehow also building my own company.
+    </p>
+    <div class="hero-links fade-up delay-3">
+      <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ kavyansh.tyagi7@gmail.com</a>
+      <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank">GitHub</a>
+      <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank">LinkedIn</a>
+      <a class="pill" href="https://scholar.google.com" target="_blank">Google Scholar</a>
+      <a class="pill" href="tel:+919311146823">+91 93111 46823</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <p class="sec-label">About me</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm the kind of person who reads a paper on optimal transport at midnight and then
+            can't sleep because there's a cleaner formulation spinning around in their head.
+            <strong>Calculus isn't just a tool for me — it's a language.</strong> Everything in my
+            research, from Mamba state transitions to regret-based routing controllers, traces back
+            to some beautiful piece of analysis.
+          </p>
+          <p>
+            My research lives at the intersection of <strong>efficiency and robustness</strong>. 
+            I don't believe in throwing a hundred million parameters at a problem.
+            I want models that are surgically precise — ones that <em>understand structure</em> rather
+            than memorize surface statistics. That philosophy drives everything from
+            LightMedSeg (3D segmentation in 0.48M params) to SCAF (hyperspectral grouping via
+            optimal transport).
+          </p>
+          <p>
+            Outside research I'm building <strong>Reflara</strong>, an execution-intelligence platform
+            for autonomous AI agents, and shipping agentic pipelines at <strong>Qten.ai</strong>. 
+            I've contributed <strong>25+ merged pull requests</strong> to Lightning AI and OpenCV.
+            And yes — I still find time to read textbooks for fun.
+          </p>
+        </div>
+        <div class="about-facts">
+          <div class="fact-row">
+            <span class="fact-label">Currently</span>
+            <span class="fact-value">B.Tech ECE, NIT Kurukshetra — CGPA 8.18</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">JEE Mains 2023</span>
+            <span class="fact-value">98.54 percentile</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Class XII · X</span>
+            <span class="fact-value">92% · 96%</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Collaborations</span>
+            <span class="fact-value">Sapienza University of Rome · Univ. of Tübingen</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Industry</span>
+            <span class="fact-value">Qten.ai · Founder @ Reflara</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Open Source</span>
+            <span class="fact-value">25+ merged PRs (Lightning AI, OpenCV)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">Interests</span>
+            <span class="fact-value">Calculus · SSMs · Optimal transport · Hyperspectral vision</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="wrap">
+      <p class="sec-label">Research experience</p>
+      <h2>Four labs.<br><em>One obsession.</em></h2>
+      <p class="sec-desc">Efficient, physically grounded models that work on real hardware under real noise. Every project is a different angle on the same question.</p>
+
+      <div class="research-list">
+
+        <!-- Sapienza -->
+        <div class="research-item">
+          <span class="r-num">01</span>
+          <div class="r-body">
+            <p class="r-where">Sapienza University of Rome · May 2026 – Present · with Paulo Russo</p>
+            <h3 class="r-title">Physically Grounded State-Space Models for Hyperspectral Super-Resolution</h3>
+            <p class="r-desc">
+              Proposed <strong>AbSpec-Mamba</strong> and <strong>VolMamba v2</strong> — models that condition selective state transitions
+              on per-pixel material abundance, using prototype-guided reconstruction to recover fine spectral detail
+              without hallucinating physically implausible spectral signatures.
+            </p>
+            <p class="r-desc">
+              Building content-adaptive multidimensional scanning and progressive coarse-to-fine reconstruction
+              so the model restores high-resolution hyperspectral images even under severe sensor degradation and spectral corruption.
+              This work directly extends the physical grounding missing from all prior SSM-based HSI methods.
+            </p>
+          </div>
+          <span class="r-status status-active">Active</span>
+        </div>
+
+        <!-- Tübingen -->
+        <div class="research-item">
+          <span class="r-num">02</span>
+          <div class="r-body">
+            <p class="r-where">University of Tübingen · Sep 2025 – Present · with Andreas Zeigler</p>
+            <h3 class="r-title">CE-GNN: Causally Constrained Graph Networks for Event-Based Vision</h3>
+            <p class="r-desc">
+              Formally characterized how four leading event-vision GNNs — AEGNN, SlideGCN, Voxel-GNN, HUGNet2+PA —
+              leak future information backward in time, fundamentally violating the causality required for
+              true real-time inference on event-camera streams.
+            </p>
+            <p class="r-desc">
+              Designing <strong>CE-GNN</strong> to enforce strict causal constraints via O(k log N) incremental graph
+              construction, directed temporal attention, and predictive edge insertion. Keeps latency low while
+              fully respecting event ordering. Manuscript in preparation.
+            </p>
+          </div>
+          <span class="r-status status-active">Manuscript prep</span>
+        </div>
+
+        <!-- IIT Ropar -->
+        <div class="research-item">
+          <span class="r-num">03</span>
+          <div class="r-body">
+            <p class="r-where">IIT Ropar · May – Aug 2025 · with Dr. Puneet Goyal</p>
+            <h3 class="r-title">SCAF: Robust Hyperspectral Classification via Optimal Transport</h3>
+            <p class="r-desc">
+              Identified a foundational flaw in standard HSI pipelines: treating spectral bands as independent inputs
+              discards recoverable inter-band correlation. Recovered this signal using differentiable optimal-transport
+              grouping with balanced Sinkhorn assignments that learn which bands naturally belong together.
+            </p>
+            <p class="r-desc">
+              Designed per-group Mamba processors that isolate sensor noise to individual groups, converting spectral
+              redundancy from a liability into a graceful-degradation mechanism — achieving
+              <strong>+11.6% accuracy under 20–30% band dropout</strong> against Transformer baselines.
+            </p>
+          </div>
+          <span class="r-status status-review">Under review</span>
+        </div>
+
+        <!-- NIT KKR -->
+        <div class="research-item">
+          <span class="r-num">04</span>
+          <div class="r-body">
+            <p class="r-where">NIT Kurukshetra · Sep 2024 – May 2025 · with Dr. Vishwas Rathi & Dr. Shweta Sharma</p>
+            <h3 class="r-title">3D Medical Segmentation & AI-Driven Malware Analysis</h3>
+            <p class="r-desc">
+              Built parameter-efficient 3D segmentation and hyperspectral models targeting deployability on
+              memory-constrained clinical hardware — work that became LightMedSeg and RefineFormer3D.
+              Concurrently developed hybrid deep-learning frameworks for ransomware detection combining static binary
+              features with NLP-based representations of disassembled code, leading to the accepted ICDAM 2025 paper.
+            </p>
+          </div>
+          <span class="r-status status-pub">2 papers</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDING -->
+  <section id="building">
+    <div class="wrap">
+      <p class="sec-label">What I'm building</p>
+      <h2>Startups, frameworks,<br><em>and a few crazy ideas.</em></h2>
+      <p class="sec-desc">Research is one side of the coin. The other is shipping things people actually use.</p>
+
+      <div class="build-grid">
+
+        <!-- Reflara featured -->
+        <div class="build-card featured">
+          <div>
+            <p class="bc-tag">Founder & AI Systems Engineer · Ongoing</p>
+            <h3 class="bc-title">Reflara</h3>
+            <p class="bc-desc">
+              A replay-native execution-intelligence platform for autonomous AI agents.
+              Most multi-agent systems are black boxes — once something goes wrong, you can't go back.
+              Reflara fixes that. It deterministically records and re-runs agent trajectories, reconstructs
+              orchestration state, retrieval influence, and memory evolution over time — so you can
+              reproduce, debug, and regression-test nondeterministic agent behavior step by step.
+            </p>
+            <a class="bc-link" href="https://github.com/kavyanshtyagi/reflara" target="_blank">View on GitHub →</a>
+          </div>
+          <div>
+            <ul class="bc-details">
+              <li>Architected four core engines: replay-core, execution-core, mission-core, and a differential-execution engine</li>
+              <li>Deterministic replay of agent trajectories — every step, every decision, reproducible</li>
+              <li>Execution-aware infrastructure that reconstructs orchestration state and memory evolution</li>
+              <li>Replay-native regression testing for long-running agent systems validated against past runs</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Qten -->
+        <div class="build-card">
+          <p class="bc-tag">AI Engineer Intern · May 2026 – Present</p>
+          <h3 class="bc-title">Qten.ai</h3>
+          <p class="bc-desc">
+            Building agentic orchestration for grounded conversational content generation at scale —
+            multi-layer pipelines that verify every claim against retrieved evidence and self-repair
+            low-quality output before it ships.
+          </p>
+          <ul class="bc-details">
+            <li>Multi-layer generation pipelines with narrative trajectory constraints and deterministic evaluators</li>
+            <li>Modular LLM routing that dispatches to lightweight reasoning agents over a structured latent planning layer</li>
+            <li>Cuts cost and latency while sustaining high-engagement media generation at scale</li>
+          </ul>
+          <br>
+          <a class="bc-link" href="https://qten.ai" target="_blank">qten.ai →</a>
+        </div>
+
+        <!-- S6MOD -->
+        <div class="build-card">
+          <p class="bc-tag">Selected project · Jan 2026 – Present</p>
+          <h3 class="bc-title">S6MOD: Adaptive Mixture-of-Experts Routing</h3>
+          <p class="bc-desc">
+            Replaced the fixed routing temperature in mixture-of-experts with a regret-driven adaptive
+            controller — letting the model tune its own exploration vs. exploitation as conditions shift.
+          </p>
+          <ul class="bc-details">
+            <li>Reformulated routing as a closed-loop feedback system driven by loss trends and expert-usage entropy</li>
+            <li>Improved stability in online continual learning under distribution shift</li>
+            <li>Minimal architectural changes to S6MOD — drops straight in</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="wrap">
+      <p class="sec-label">Publications & preprints</p>
+      <h2>Four papers.<br><em>All first-author (mostly).</em></h2>
+
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <div>
+            <p class="pub-title">LightMedSeg: Lightweight 3D Medical Image Segmentation with Learned Spatial Anchors</p>
+            <p class="pub-meta">Tyagi et al. · CVPR Workshops, Efficient Computer Vision (ECV 2026)</p>
+            <p class="pub-desc">
+              84.8% Dice on BraTS · 93.5% on ACDC · 0.48M parameters · 14 GFLOPs.
+              Parameter-efficient 3D segmentation that makes volumetric medical imaging viable on
+              memory-constrained clinical hardware, with strong label efficiency (78.4% Dice with 10% labeled data).
+            </p>
+          </div>
+          <span class="pub-badge badge-cvpr">CVPR Workshop 2026</span>
+        </div>
+
+        <div class="pub-item">
+          <div>
+            <p class="pub-title">SCAF: Robust Hyperspectral Classification via Optimal Transport-Based Spectral Grouping</p>
+            <p class="pub-meta">Tyagi et al. · Preprint, under review</p>
+            <p class="pub-desc">
+              Replaces independent band processing with differentiable optimal-transport grouping
+              (balanced Sinkhorn). Mamba backbone cuts complexity from quadratic to linear.
+              +11.6% accuracy under 20–30% band dropout. State-of-the-art clean performance across three benchmarks.
+            </p>
+          </div>
+          <span class="pub-badge badge-review">Under review</span>
+        </div>
+
+        <div class="pub-item">
+          <div>
+            <p class="pub-title">RefineFormer3D: Hierarchical Multi-Scale Transformer for Parameter-Efficient 3D Medical Image Segmentation</p>
+            <p class="pub-meta">Tyagi et al. · Preprint, under review</p>
+            <p class="pub-desc">
+              86% Dice on BraTS 2017. Outperforms SegFormer3D in efficiency.
+              Lightweight 3D Transformer with strong label efficiency for low-annotation settings.
+            </p>
+          </div>
+          <span class="pub-badge badge-review">Under review</span>
+        </div>
+
+        <div class="pub-item">
+          <div>
+            <p class="pub-title">Ghidra-Assisted Static Analysis and Ensemble Learning with Differential-Privacy GANs for Ransomware Detection</p>
+            <p class="pub-meta">Chaturvedi et al. · ICDAM 2025 (Accepted)</p>
+            <p class="pub-desc">
+              Hybrid deep-learning framework for ransomware detection combining static binary features
+              with NLP-based representations of Ghidra-disassembled code and differential-privacy-preserving GANs.
+            </p>
+          </div>
+          <span class="pub-badge badge-accepted">ICDAM 2025</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section id="oss">
+    <div class="wrap">
+      <p class="sec-label">Open source</p>
+      <h2>Code that ships<br><em>to real codebases.</em></h2>
+      <p class="sec-desc">Not just forks. Actual merged work reviewed and adopted by core maintainers.</p>
+
+      <div class="oss-row">
+        <div class="oss-card">
+          <span class="oss-pr">16 PRs merged</span>
+          <h4>Lightning AI</h4>
+          <p>Improved model compilation pipelines, fixed argument parsing edge-cases across training configurations, and hardened training stability under distributed settings. Changes reviewed and adopted by core maintainers into the main branch.</p>
+          <br>
+          <a href="https://github.com/Lightning-AI/lightning" target="_blank">github.com/Lightning-AI/lightning</a>
+        </div>
+        <div class="oss-card">
+          <span class="oss-pr">9 PRs merged</span>
+          <h4>OpenCV</h4>
+          <p>Targeted bug fixes and API robustness improvements across core computer-vision pipelines. Hardened edge-case handling in critical image processing routines used by thousands of downstream applications.</p>
+          <br>
+          <a href="https://github.com/opencv/opencv" target="_blank">github.com/opencv/opencv</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <p class="sec-label">Technical skills</p>
+      <div class="skills-wrap">
+        <div class="skill-group">
+          <h4>Research areas</h4>
+          <p>State Space Models (Mamba, S6) · Causal & Event-Based GNNs · Hyperspectral Classification · 3D Medical Segmentation · Parameter-Efficient Vision Transformers · Optimal Transport</p>
+        </div>
+        <div class="skill-group">
+          <h4>Frameworks</h4>
+          <p>PyTorch (AMP, custom modules) · PyTorch Lightning · TensorFlow · Keras · Scikit-learn</p>
+        </div>
+        <div class="skill-group">
+          <h4>Libraries</h4>
+          <p>OpenCV · NiBabel · TorchIO · Albumentations · NumPy · Pandas · Matplotlib</p>
+        </div>
+        <div class="skill-group">
+          <h4>Tooling</h4>
+          <p>Git · Docker · CUDA · Google Cloud Platform · Linux · Ghidra (Jython) · Jupyter</p>
+        </div>
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <p>Python · C++ · SQL · LaTeX · Jython</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div class="contact-text">
+          <p class="sec-label">Get in touch</p>
+          <h2>Let's talk<br><em>research or startups.</em></h2>
+          <p>
+            I'm always up for a conversation — whether it's about state-space models,
+            a research collaboration, a startup idea, or just arguing about whether Adam
+            actually converges. Drop me a message.
+          </p>
+          <div class="hero-links">
+            <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ Email me</a>
+            <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank">LinkedIn</a>
+            <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank">GitHub</a>
+          </div>
+        </div>
+        <div class="contact-links">
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:kavyansh.tyagi7@gmail.com">kavyansh.tyagi7@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>Phone</span>
+            <a href="tel:+919311146823">+91 93111 46823</a>
+          </div>
+          <div class="contact-item">
+            <span>GitHub</span>
+            <a href="https://github.com/kavyanshtyagi" target="_blank">kavyanshtyagi</a>
+          </div>
+          <div class="contact-item">
+            <span>Scholar</span>
+            <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+          </div>
+          <div class="contact-item">
+            <span>Startup</span>
+            <a href="https://qten.ai" target="_blank">qten.ai</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer>
+      <span>Kavyansh Tyagi · NIT Kurukshetra · Class of 2027</span>
+      <span>handbuilt · no templates · no frameworks</span>
+    </footer>
+  </div>
+
+</body>
+</html>
