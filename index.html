@@ -17,7 +17,7 @@
     <meta property="og:url" content="https://kavyanshtyagi.github.io/">
     <meta property="og:type" content="website">
     <meta name="google-site-verification" content="QWAa_Dz7M0RUuajD8eg3EcmLb9b5wv7v12RM3lVyMhc">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
@@ -317,45 +317,64 @@
     .bc-details li:last-child { border-bottom: none; }
     .bc-details li::before { content: '→'; color: var(--ink3); font-size: 12px; flex-shrink: 0; }
 
-    /* ── PUBLICATIONS ── */
-    .pub-list { display: flex; flex-direction: column; gap: 0; }
-    .pub-item {
-      padding: 28px 0;
-      border-top: 1px solid var(--rule);
+    /* ── PUBLICATIONS (plain academic list) ── */
+    .papers, .papers * { font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif; }
+    .papers h2 { font-size: 30px; font-weight: 400; letter-spacing: 0; margin-bottom: 8px; }
+    .papers .p-intro { font-size: 16px; color: var(--ink); margin-bottom: 36px; max-width: 720px; line-height: 1.5; }
+    .paper {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
+      grid-template-columns: 240px 1fr;
+      gap: 0 28px;
+      padding: 16px;
+      margin: 0 -16px 18px;
       align-items: start;
     }
-    .pub-item:last-child { border-bottom: 1px solid var(--rule); }
-    .pub-title {
-      font-size: 16px;
-      font-weight: 500;
-      margin-bottom: 6px;
-      line-height: 1.45;
-      color: var(--ink);
+    .paper.hl { background: #fff8dc; }
+    .thumb {
+      position: relative;
+      width: 240px;
+      aspect-ratio: 16 / 10;
+      background: #ececea;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
-    .pub-meta {
-      font-size: 13px;
-      color: var(--ink3);
-      margin-bottom: 8px;
+    .thumb::before {
+      content: attr(data-label);
+      position: absolute;
+      color: #8a8a86;
+      font-size: 14px;
+      padding: 0 10px;
+      text-align: center;
     }
-    .pub-desc {
-      font-size: 13px;
-      color: var(--ink2);
-      line-height: 1.7;
-      max-width: 580px;
+    .thumb img { position: relative; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .paper-body { font-size: 16px; line-height: 1.5; color: var(--ink); padding-top: 2px; }
+    .paper-title { color: #3a6fd8; font-weight: 700; font-size: 17px; display: inline-block; margin-bottom: 1px; }
+    .paper-title:hover { color: #1f4aa8; text-decoration: underline; }
+    .paper-body .me { font-weight: 700; }
+    .paper-body .venue { font-style: italic; }
+    .paper-body .venue b { font-style: normal; font-weight: 700; }
+    .paper-links { margin-top: 1px; }
+    .paper-links a { color: #3a6fd8; }
+    .paper-links a:hover { color: #1f4aa8; text-decoration: underline; }
+    .paper-links .sep { color: var(--ink2); padding: 0 3px; }
+    .bib {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--paper2);
+      border: 1px solid var(--rule);
+      font-family: ui-monospace, Menlo, Consolas, monospace !important;
+      font-size: 12px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      overflow-x: auto;
     }
-    .pub-badge {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 5px 11px;
-      border-radius: 4px;
-      white-space: nowrap;
+    .bib[hidden] { display: none; }
+    @media (max-width: 768px) {
+      .paper { grid-template-columns: 1fr; gap: 12px; margin: 0 -12px 14px; padding: 12px; }
+      .thumb { width: 100%; max-width: 360px; }
     }
-    .badge-cvpr { background: #eef2ff; color: #3730a3; }
-    .badge-review { background: #fef9ec; color: #92400e; }
-    .badge-accepted { background: #f0fdf4; color: #166534; }
 
     /* ── OSS ── */
     .oss-row {
@@ -532,7 +551,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#building">Building</a></li>
-        <li><a href="#publications">Papers</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#oss">Open source</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -794,74 +813,90 @@
   </section>
 
   <!-- PUBLICATIONS -->
-  <section id="publications">
+  <section id="publications" class="papers">
     <div class="wrap">
-      <p class="sec-label">Publications & preprints</p>
-      <h2>Five papers.<br><em>Four first-author.</em></h2>
+      <h2>Publications</h2>
+      <p class="p-intro">Papers and preprints. Code and project pages are linked where they are public.</p>
 
-      <div class="pub-list">
-
-        <div class="pub-item">
-          <div>
-            <p class="pub-title">Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</p>
-            <p class="pub-meta">Tyagi &amp; Russo &middot; WACV 2027</p>
-            <p class="pub-desc">
-              Pooling a model's output over a short clip recovers the forgotten class from every published video-unlearning baseline tested.
-              PACE suppresses it with a permutation-invariant pooled adversary; validated on VSPW and Virtual KITTI 2.
-              <a class="bc-link" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page &rarr;</a>
-            </p>
-          </div>
-          <span class="pub-badge badge-review">WACV 2027</span>
+      <div class="paper hl">
+        <div class="thumb" data-label="PACE"><img src="assets/pubs/pace.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <a class="paper-title" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</a><br>
+          <span class="me">Kavyansh Tyagi</span>, Paolo Russo<br>
+          <span class="venue">IEEE/CVF Winter Conference on Applications of Computer Vision (<b>WACV</b>), 2027</span>
+          <div class="paper-links"><a href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">project page</a><span class="sep">/</span><a href="https://github.com/KAVYANSHTYAGI/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning" target="_blank" rel="noopener">code</a><span class="sep">/</span><a href="#" class="cite-toggle">cite</a></div>
+          <pre class="bib" hidden>@inproceedings{tyagi2027beyond,
+  title     = {Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning},
+  author    = {Tyagi, Kavyansh and Russo, Paolo},
+  booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year      = {2027}
+}</pre>
         </div>
-
-        <div class="pub-item">
-          <div>
-            <p class="pub-title">LightMedSeg: Lightweight 3D Medical Image Segmentation with Learned Spatial Anchors</p>
-            <p class="pub-meta">Tyagi et al. · CVPR Workshops, Efficient Computer Vision (ECV 2026)</p>
-            <p class="pub-desc">
-              84.8% Dice on BraTS · 93.5% on ACDC · 0.48M parameters · 14 GFLOPs.
-              Parameter-efficient 3D segmentation for memory-constrained clinical hardware with strong label efficiency.
-              <a class="bc-link" href="https://github.com/KAVYANSHTYAGI/LightMedSeg" target="_blank" rel="noopener">Code &rarr;</a>
-            </p>
-          </div>
-          <span class="pub-badge badge-cvpr">CVPR Workshop 2026</span>
-        </div>
-
-        <div class="pub-item">
-          <div>
-            <p class="pub-title">SCAF: Robust Hyperspectral Classification via Optimal Transport-Based Spectral Grouping</p>
-            <p class="pub-meta">Tyagi et al. · Preprint, under review</p>
-            <p class="pub-desc">
-              Differentiable optimal-transport grouping with balanced Sinkhorn assignments.
-              Mamba backbone cuts complexity from quadratic to linear. +11.6% accuracy under band dropout.
-            </p>
-          </div>
-          <span class="pub-badge badge-review">Under review</span>
-        </div>
-
-        <div class="pub-item">
-          <div>
-            <p class="pub-title">RefineFormer3D: Hierarchical Multi-Scale Transformer for Parameter-Efficient 3D Medical Segmentation</p>
-            <p class="pub-meta">Tyagi et al. · Preprint, under review</p>
-            <p class="pub-desc">
-              86% Dice on BraTS 2017 · Outperforms SegFormer3D in efficiency and label efficiency for low-annotation settings.
-            </p>
-          </div>
-          <span class="pub-badge badge-review">Under review</span>
-        </div>
-
-        <div class="pub-item">
-          <div>
-            <p class="pub-title">Ghidra-Assisted Static Analysis and Ensemble Learning with Differential-Privacy GANs for Ransomware Detection</p>
-            <p class="pub-meta">Chaturvedi et al. · ICDAM 2025 (Accepted)</p>
-            <p class="pub-desc">
-              Hybrid framework combining static binary features with NLP-based code representations and differential-privacy GANs.
-            </p>
-          </div>
-          <span class="pub-badge badge-accepted">ICDAM 2025</span>
-        </div>
-
       </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="CEGNN"><img src="assets/pubs/cegnn.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <a class="paper-title" href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">Rate as a Feature, Not a Nuisance: Curriculum-FiLM Event GNN</a><br>
+          <span class="me">Kavyansh Tyagi</span> et al.<br>
+          <span class="venue">Asian Conference on Computer Vision Workshops (ACCVW, AECV), 2026</span>
+          <div class="paper-links"><a href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">code</a></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="LightMedSeg"><img src="assets/pubs/lightmedseg.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <a class="paper-title" href="https://arxiv.org/abs/2603.07228" target="_blank" rel="noopener">LightMedSeg: Lightweight 3D Medical Image Segmentation with Learned Spatial Anchors</a><br>
+          <span class="me">Kavyansh Tyagi</span>, Vishwas Rathi, Puneet Goyal<br>
+          <span class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW), 2026</span>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2603.07228" target="_blank" rel="noopener">arxiv</a><span class="sep">/</span><a href="https://arxiv.org/pdf/2603.07228" target="_blank" rel="noopener">pdf</a><span class="sep">/</span><a href="#" class="cite-toggle">cite</a></div>
+          <pre class="bib" hidden>@inproceedings{tyagi2026lightmedseg,
+  title     = {LightMedSeg: Lightweight 3D Medical Image Segmentation with Learned Spatial Anchors},
+  author    = {Tyagi, Kavyansh and Rathi, Vishwas and Goyal, Puneet},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
+  year      = {2026},
+  note      = {arXiv:2603.07228}
+}</pre>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="RefineFormer3D"><img src="assets/pubs/refineformer3d.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <a class="paper-title" href="https://arxiv.org/abs/2602.16320" target="_blank" rel="noopener">RefineFormer3D: Efficient 3D Medical Image Segmentation via Adaptive Multi-Scale Transformer with Cross Attention Fusion</a><br>
+          <span class="me">Kavyansh Tyagi</span>, Vishwas Rathi, Puneet Goyal<br>
+          <span class="venue">arXiv preprint arXiv:2602.16320, 2026</span>
+          <div class="paper-links"><a href="https://arxiv.org/abs/2602.16320" target="_blank" rel="noopener">arxiv</a><span class="sep">/</span><a href="https://arxiv.org/pdf/2602.16320" target="_blank" rel="noopener">pdf</a><span class="sep">/</span><a href="#" class="cite-toggle">cite</a></div>
+          <pre class="bib" hidden>@article{tyagi2026refineformer3d,
+  title   = {RefineFormer3D: Efficient 3D Medical Image Segmentation via Adaptive Multi-Scale Transformer with Cross Attention Fusion},
+  author  = {Tyagi, Kavyansh and Rathi, Vishwas and Goyal, Puneet},
+  journal = {arXiv preprint arXiv:2602.16320},
+  year    = {2026}
+}</pre>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="SCAF"><img src="assets/pubs/scaf.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <span class="paper-title" style="color:var(--ink)">SCAF: Robust Hyperspectral Classification via Optimal Transport-Based Spectral Grouping</span><br>
+          <span class="me">Kavyansh Tyagi</span> et al.<br>
+          <span class="venue">Preprint, under review</span>
+          
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="ICDAM 2025"><img src="assets/pubs/icdam.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <span class="paper-title" style="color:var(--ink)">Ghidra-Assisted Static Analysis and Ensemble Learning with Differential-Privacy GANs for Ransomware Detection</span><br>
+          Chaturvedi et al.<br>
+          <span class="venue">ICDAM, 2025</span>
+          
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -969,6 +1004,17 @@
       <span>handbuilt · no templates · no frameworks</span>
     </footer>
   </div>
+
+
+  <script>
+    document.querySelectorAll('.cite-toggle').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var bib = a.closest('.paper-body').querySelector('.bib');
+        if (bib) bib.hidden = !bib.hidden;
+      });
+    });
+  </script>
 
 </body>
 </html>
