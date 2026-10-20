@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kavyansh Tyagi</title>
-  <meta name="description" content="ML Researcher. State space models, hyperspectral vision, efficient sequence modeling.">
+  <meta name="description" content="ML Researcher at NIT Kurukshetra. State space models, hyperspectral vision, event-based vision, machine unlearning, efficient sequence modeling.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="keywords" content="Kavyansh Tyagi, ML Researcher, NIT Kurukshetra, LightMedSeg, SCAF, Mamba, SSM, medical segmentation, hyperspectral, CVPR 2026">
+    <meta name="keywords" content="Kavyansh Tyagi, ML Researcher, NIT Kurukshetra, LightMedSeg, SCAF, CEGNN, PACE, ADVR, Mamba, SSM, medical segmentation, hyperspectral, event camera, machine unlearning, CVPR 2026">
     <link rel="canonical" href="https://kavyanshtyagi.github.io/">
     <meta property="og:title" content="Kavyansh Tyagi | ML Researcher | NIT Kurukshetra">
-    <meta property="og:description" content="ML Researcher at NIT Kurukshetra. Author of LightMedSeg (CVPR Workshops 2026). Research in Mamba/SSM vision, 3D medical segmentation, and hyperspectral classification.">
+    <meta property="og:description" content="ML Researcher at NIT Kurukshetra. Author of LightMedSeg (CVPR Workshops 2026). Research in Mamba/SSM vision, 3D medical segmentation, hyperspectral classification, event-based vision, and machine unlearning.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Kavyansh Tyagi | ML Researcher">
+    <meta name="twitter:description" content="Efficient models for real data: SSMs, hyperspectral and event-based vision, machine unlearning.">
     <meta property="og:url" content="https://kavyanshtyagi.github.io/">
     <meta property="og:type" content="website">
     <meta name="google-site-verification" content="QWAa_Dz7M0RUuajD8eg3EcmLb9b5wv7v12RM3lVyMhc">
@@ -530,6 +533,7 @@
         <li><a href="#research">Research</a></li>
         <li><a href="#building">Building</a></li>
         <li><a href="#publications">Papers</a></li>
+        <li><a href="#oss">Open source</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -548,9 +552,9 @@
     </p>
     <div class="hero-links fade-up delay-3">
       <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ kavyansh.tyagi7@gmail.com</a>
-      <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank">GitHub</a>
-      <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank">LinkedIn</a>
-      <a class="pill" href="https://scholar.google.com/citations?user=9Kg8eQUAAAAJ&hl=en" target="_blank">Google Scholar</a>
+      <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank" rel="noopener">GitHub</a>
+      <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="pill" href="https://scholar.google.com/citations?user=9Kg8eQUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
       <a class="pill" href="tel:+919311146823">+91 93111 46823</a>
     </div>
   </div>
@@ -562,7 +566,7 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I'm a second-year undergraduate at NIT Kurukshetra working on applied machine learning research.
+            I'm a final-year undergraduate at NIT Kurukshetra working on applied machine learning research.
             My interests are <strong>efficiency and robustness</strong> — I believe in models that are surgically precise,
             ones that understand underlying structure rather than memorize surface statistics.
           </p>
@@ -605,7 +609,7 @@
           </div>
           <div class="fact-row">
             <span class="fact-label">Interests</span>
-            <span class="fact-value">SSMs · Optimal transport · Hyperspectral vision · Formal methods</span>
+            <span class="fact-value">SSMs · Optimal transport · Hyperspectral vision · Event-based vision · Machine unlearning · Formal methods</span>
           </div>
         </div>
       </div>
@@ -625,7 +629,7 @@
         <div class="research-item">
           <span class="r-num">01</span>
           <div class="r-body">
-            <p class="r-where">Sapienza University of Rome · May 2026 – Present · with Paulo Russo</p>
+            <p class="r-where">Sapienza University of Rome · May 2026 – Present · with Paolo Russo</p>
             <h3 class="r-title">Physically Grounded SSMs for Hyperspectral Super-Resolution</h3>
             <p class="r-desc">
               Proposed <strong>AbSpec-Mamba</strong> and <strong>VolMamba v2</strong> — models that condition selective state transitions
@@ -645,15 +649,17 @@
           <span class="r-num">02</span>
           <div class="r-body">
             <p class="r-where">University of Tübingen · Sep 2025 – Present · with Andreas Zeigler</p>
-            <h3 class="r-title">CE-GNN: Causally Constrained Graph Networks for Event-Based Vision</h3>
+            <h3 class="r-title">CEGNN: Rate as a Feature, Not a Nuisance</h3>
             <p class="r-desc">
-              Formally characterized how leading event-vision GNNs (AEGNN, SlideGCN, Voxel-GNN, HUGNet2+PA)
-              leak future information backward in time, violating the causality required for
-              true real-time inference on event-camera streams.
+              Event-camera output rate depends on scene motion, texture and sensor settings. On N-Caltech101 it spans roughly 26&times;
+              across recordings and differs by class. Most event-GNN pipelines either rescale timestamps, discarding the rate before the
+              network sees it, or train for rate invariance and lose accuracy on real recordings.
             </p>
             <p class="r-desc">
-              Designing <strong>CE-GNN</strong> to enforce strict causal constraints via O(k log N) incremental graph
-              construction, directed temporal attention, and predictive edge insertion. Manuscript in preparation.
+              <strong>CEGNN</strong> keeps the rate and uses it: the log event rate drives identity-initialised FiLM layers in a PointNet++ backbone,
+              trained with a two-stage rate curriculum. <strong>+14.0 points</strong> on DVS128 Gesture and <strong>+6.3</strong> on N-Caltech101
+              at natural rates, and <strong>+34 points</strong> on N-Caltech101 under synthetic 1/8&times;&ndash;8&times; speed shifts, for 49K extra parameters.
+              Negative results included. <a class="bc-link" href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">Code &rarr;</a>
             </p>
           </div>
           <span class="r-status status-active">Manuscript prep</span>
@@ -693,6 +699,28 @@
           <span class="r-status status-pub">2 papers</span>
         </div>
 
+        <!-- Unlearning -->
+        <div class="research-item">
+          <span class="r-num">05</span>
+          <div class="r-body">
+            <p class="r-where">Machine unlearning · 2026 · PACE with Paolo Russo</p>
+            <h3 class="r-title">Privacy Leakage in Class Unlearning: ADVR &amp; PACE</h3>
+            <p class="r-desc">
+              Segmentation unlearning that merely relabels a class leaves a class-shaped hole in the model's output, and a learned attacker
+              can reconstruct the forgotten mask from the output alone. <strong>ADVR</strong> (adversarial silhouette removal plus retain replay)
+              is the only method leak-safe on both output and feature surfaces across ADE20K and Cityscapes, while keeping more retained-class
+              accuracy than the baselines. <a class="bc-link" href="https://github.com/kavyanshtyagi/advr-unlearning" target="_blank" rel="noopener">Code &rarr;</a>
+            </p>
+            <p class="r-desc">
+              <strong>PACE</strong> extends the audit to video: averaging a model's output over a ~2-second clip recovers the forgotten class from every
+              published baseline tested, and a time-shuffled control shows that cross-frame redundancy, not trajectory, carries the signal.
+              A permutation-invariant pooled adversary cuts pooled attacker AP from 93.8 to 18.8 on VSPW (person).
+              <a class="bc-link" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page &rarr;</a>
+            </p>
+          </div>
+          <span class="r-status status-review">WACV 2027</span>
+        </div>
+
       </div>
     </div>
   </section>
@@ -717,7 +745,7 @@
               Reflara fixes that by deterministically recording and re-running agent trajectories, reconstructing
               orchestration state, retrieval influence, and memory evolution over time.
             </p>
-            <a class="bc-link" href="https://github.com/kavyanshtyagi/reflara" target="_blank">View on GitHub →</a>
+            <a class="bc-link" href="https://github.com/Reflara-ai/reflara-oss" target="_blank" rel="noopener">View on GitHub →</a>
           </div>
           <div>
             <ul class="bc-details">
@@ -743,7 +771,7 @@
             <li>Cuts cost and latency while sustaining high-engagement content generation at scale</li>
           </ul>
           <br>
-          <a class="bc-link" href="https://qten.ai" target="_blank">qten.ai →</a>
+          <a class="bc-link" href="https://qten.ai" target="_blank" rel="noopener">qten.ai →</a>
         </div>
 
         <!-- S6MOD -->
@@ -769,9 +797,22 @@
   <section id="publications">
     <div class="wrap">
       <p class="sec-label">Publications & preprints</p>
-      <h2>Four papers.<br><em>All first-author.</em></h2>
+      <h2>Five papers.<br><em>Four first-author.</em></h2>
 
       <div class="pub-list">
+
+        <div class="pub-item">
+          <div>
+            <p class="pub-title">Beyond the Frame: Redundancy, Not Trajectory, Carries the Privacy Leak in Video Unlearning</p>
+            <p class="pub-meta">Tyagi &amp; Russo &middot; WACV 2027</p>
+            <p class="pub-desc">
+              Pooling a model's output over a short clip recovers the forgotten class from every published video-unlearning baseline tested.
+              PACE suppresses it with a permutation-invariant pooled adversary; validated on VSPW and Virtual KITTI 2.
+              <a class="bc-link" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page &rarr;</a>
+            </p>
+          </div>
+          <span class="pub-badge badge-review">WACV 2027</span>
+        </div>
 
         <div class="pub-item">
           <div>
@@ -780,6 +821,7 @@
             <p class="pub-desc">
               84.8% Dice on BraTS · 93.5% on ACDC · 0.48M parameters · 14 GFLOPs.
               Parameter-efficient 3D segmentation for memory-constrained clinical hardware with strong label efficiency.
+              <a class="bc-link" href="https://github.com/KAVYANSHTYAGI/LightMedSeg" target="_blank" rel="noopener">Code &rarr;</a>
             </p>
           </div>
           <span class="pub-badge badge-cvpr">CVPR Workshop 2026</span>
@@ -836,14 +878,14 @@
           <h4>Lightning AI</h4>
           <p>Improved model compilation pipelines, fixed argument parsing edge-cases across training configurations, and hardened training stability under distributed settings. Changes reviewed and adopted by core maintainers.</p>
           <br>
-          <a href="https://github.com/Lightning-AI/lightning" target="_blank">github.com/Lightning-AI/lightning</a>
+          <a href="https://github.com/Lightning-AI/lightning" target="_blank" rel="noopener">github.com/Lightning-AI/lightning</a>
         </div>
         <div class="oss-card">
           <span class="oss-pr">9 PRs merged</span>
           <h4>OpenCV</h4>
           <p>Targeted bug fixes and API robustness improvements across core computer-vision pipelines. Hardened edge-case handling in critical image processing routines used by thousands of applications.</p>
           <br>
-          <a href="https://github.com/opencv/opencv" target="_blank">github.com/opencv/opencv</a>
+          <a href="https://github.com/opencv/opencv" target="_blank" rel="noopener">github.com/opencv/opencv</a>
         </div>
       </div>
     </div>
@@ -856,7 +898,7 @@
       <div class="skills-wrap">
         <div class="skill-group">
           <h4>Research areas</h4>
-          <p>State Space Models (Mamba, S6) · Causal & Event-Based GNNs · Hyperspectral Classification · 3D Medical Segmentation · Parameter-Efficient Vision Transformers · Optimal Transport</p>
+          <p>State Space Models (Mamba, S6) · Causal & Event-Based GNNs · Hyperspectral Classification · Machine Unlearning · 3D Medical Segmentation · Parameter-Efficient Vision Transformers · Optimal Transport</p>
         </div>
         <div class="skill-group">
           <h4>Frameworks</h4>
@@ -872,7 +914,7 @@
         </div>
         <div class="skill-group">
           <h4>Languages</h4>
-          <p>Python · C++ · SQL · LaTeX · Jython</p>
+          <p>Python · C++ · Rust · SQL · LaTeX · Jython</p>
         </div>
       </div>
     </div>
@@ -891,8 +933,8 @@
           </p>
           <div class="hero-links">
             <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ Email me</a>
-            <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank">LinkedIn</a>
-            <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank">GitHub</a>
+            <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="pill" href="https://github.com/kavyanshtyagi" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
         <div class="contact-links">
@@ -906,15 +948,15 @@
           </div>
           <div class="contact-item">
             <span>GitHub</span>
-            <a href="https://github.com/kavyanshtyagi" target="_blank">kavyanshtyagi</a>
+            <a href="https://github.com/kavyanshtyagi" target="_blank" rel="noopener">kavyanshtyagi</a>
           </div>
           <div class="contact-item">
             <span>Scholar</span>
-            <a href="https://scholar.google.com/citations?user=9Kg8eQUAAAAJ&hl=en" target="_blank">Google Scholar</a>
+            <a href="https://scholar.google.com/citations?user=9Kg8eQUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
           </div>
           <div class="contact-item">
             <span>Startup</span>
-            <a href="https://qten.ai" target="_blank">qten.ai</a>
+            <a href="https://qten.ai" target="_blank" rel="noopener">qten.ai</a>
           </div>
         </div>
       </div>
