@@ -549,9 +549,9 @@
       <span class="nav-name">Kavyansh Tyagi</span>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#building">Building</a></li>
-        <li><a href="#publications">Publications</a></li>
         <li><a href="#oss">Open source</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -563,11 +563,11 @@
     <p class="hero-eyebrow fade-up">ML Researcher · NIT Kurukshetra · Class of 2027</p>
     <h1 class="fade-up delay-1">Efficient models<br><em>for real data.</em></h1>
     <p class="hero-bio fade-up delay-2">
-      I work on <strong>state-space models</strong>, <strong>hyperspectral vision</strong>, and <strong>efficient sequence modeling</strong> —
+      I work on <strong>state-space models</strong>, <strong>hyperspectral vision</strong>, and <strong>efficient sequence modeling</strong>,
       building systems that are both mathematically principled and practically deployable on real hardware.
     </p>
     <p class="hero-note fade-up delay-2">
-      Currently collaborating with two universities across continents, interning at a startup, and building my own company.
+      Currently collaborating with two universities across continents and interning at a startup.
     </p>
     <div class="hero-links fade-up delay-3">
       <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ kavyansh.tyagi7@gmail.com</a>
@@ -586,7 +586,7 @@
         <div class="about-text">
           <p>
             I'm a final-year undergraduate at NIT Kurukshetra working on applied machine learning research.
-            My interests are <strong>efficiency and robustness</strong> — I believe in models that are surgically precise,
+            My interests are <strong>efficiency and robustness</strong>. I believe in models that are surgically precise,
             ones that understand underlying structure rather than memorize surface statistics.
           </p>
           <p>
@@ -604,7 +604,7 @@
         <div class="about-facts">
           <div class="fact-row">
             <span class="fact-label">Currently</span>
-            <span class="fact-value">B.Tech ECE, NIT Kurukshetra — CGPA 8.18</span>
+            <span class="fact-value">B.Tech ECE, NIT Kurukshetra, CGPA 8.18</span>
           </div>
           <div class="fact-row">
             <span class="fact-label">JEE Mains 2023</span>
@@ -635,183 +635,6 @@
     </div>
   </section>
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <div class="wrap">
-      <p class="sec-label">Research experience</p>
-      <h2>Four labs.<br><em>One mission.</em></h2>
-      <p class="sec-desc">Efficient, robust models that work on real hardware under real constraints. Each project approaches the same core challenge from a different angle.</p>
-
-      <div class="research-list">
-
-        <!-- Sapienza -->
-        <div class="research-item">
-          <span class="r-num">01</span>
-          <div class="r-body">
-            <p class="r-where">Sapienza University of Rome · May 2026 – Present · with Paolo Russo</p>
-            <h3 class="r-title">Physically Grounded SSMs for Hyperspectral Super-Resolution</h3>
-            <p class="r-desc">
-              Proposed <strong>AbSpec-Mamba</strong> and <strong>VolMamba v2</strong> — models that condition selective state transitions
-              on per-pixel material abundance, using prototype-guided reconstruction to recover fine spectral detail
-              without hallucinating physically implausible spectral signatures.
-            </p>
-            <p class="r-desc">
-              Building content-adaptive multidimensional scanning and progressive coarse-to-fine reconstruction
-              so the model restores high-resolution hyperspectral images under severe sensor degradation and spectral corruption.
-            </p>
-          </div>
-          <span class="r-status status-active">Active</span>
-        </div>
-
-        <!-- Tübingen -->
-        <div class="research-item">
-          <span class="r-num">02</span>
-          <div class="r-body">
-            <p class="r-where">University of Tübingen · Sep 2025 – Present · with Andreas Zeigler</p>
-            <h3 class="r-title">CEGNN: Rate as a Feature, Not a Nuisance</h3>
-            <p class="r-desc">
-              Event-camera output rate depends on scene motion, texture and sensor settings. On N-Caltech101 it spans roughly 26&times;
-              across recordings and differs by class. Most event-GNN pipelines either rescale timestamps, discarding the rate before the
-              network sees it, or train for rate invariance and lose accuracy on real recordings.
-            </p>
-            <p class="r-desc">
-              <strong>CEGNN</strong> keeps the rate and uses it: the log event rate drives identity-initialised FiLM layers in a PointNet++ backbone,
-              trained with a two-stage rate curriculum. <strong>+14.0 points</strong> on DVS128 Gesture and <strong>+6.3</strong> on N-Caltech101
-              at natural rates, and <strong>+34 points</strong> on N-Caltech101 under synthetic 1/8&times;&ndash;8&times; speed shifts, for 49K extra parameters.
-              Negative results included. <a class="bc-link" href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">Code &rarr;</a>
-            </p>
-          </div>
-          <span class="r-status status-active">Manuscript prep</span>
-        </div>
-
-        <!-- IIT Ropar -->
-        <div class="research-item">
-          <span class="r-num">03</span>
-          <div class="r-body">
-            <p class="r-where">IIT Ropar · May – Aug 2025 · with Dr. Puneet Goyal</p>
-            <h3 class="r-title">SCAF: Robust Hyperspectral Classification via Optimal Transport</h3>
-            <p class="r-desc">
-              Identified that standard HSI pipelines discard recoverable inter-band correlation by treating bands independently.
-              Recovered this signal using differentiable optimal-transport grouping with balanced Sinkhorn assignments.
-            </p>
-            <p class="r-desc">
-              Per-group Mamba processors isolate sensor noise to individual groups, converting spectral redundancy
-              into a graceful-degradation mechanism — achieving <strong>+11.6% accuracy under 20–30% band dropout</strong>
-              against Transformer baselines.
-            </p>
-          </div>
-          <span class="r-status status-review">Under review</span>
-        </div>
-
-        <!-- NIT KKR -->
-        <div class="research-item">
-          <span class="r-num">04</span>
-          <div class="r-body">
-            <p class="r-where">NIT Kurukshetra · Sep 2024 – May 2025 · with Dr. Vishwas Rathi & Dr. Shweta Sharma</p>
-            <h3 class="r-title">3D Medical Segmentation & Malware Analysis</h3>
-            <p class="r-desc">
-              Built parameter-efficient 3D segmentation models targeting deployability on memory-constrained hardware,
-              work that became LightMedSeg and RefineFormer3D. Concurrently developed hybrid frameworks for ransomware
-              detection combining static binary features with NLP-based code representations, leading to the ICDAM 2025 paper.
-            </p>
-          </div>
-          <span class="r-status status-pub">2 papers</span>
-        </div>
-
-        <!-- Unlearning -->
-        <div class="research-item">
-          <span class="r-num">05</span>
-          <div class="r-body">
-            <p class="r-where">Machine unlearning · 2026 · PACE with Paolo Russo</p>
-            <h3 class="r-title">Privacy Leakage in Class Unlearning: ADVR &amp; PACE</h3>
-            <p class="r-desc">
-              Segmentation unlearning that merely relabels a class leaves a class-shaped hole in the model's output, and a learned attacker
-              can reconstruct the forgotten mask from the output alone. <strong>ADVR</strong> (adversarial silhouette removal plus retain replay)
-              is the only method leak-safe on both output and feature surfaces across ADE20K and Cityscapes, while keeping more retained-class
-              accuracy than the baselines. <a class="bc-link" href="https://github.com/kavyanshtyagi/advr-unlearning" target="_blank" rel="noopener">Code &rarr;</a>
-            </p>
-            <p class="r-desc">
-              <strong>PACE</strong> extends the audit to video: averaging a model's output over a ~2-second clip recovers the forgotten class from every
-              published baseline tested, and a time-shuffled control shows that cross-frame redundancy, not trajectory, carries the signal.
-              A permutation-invariant pooled adversary cuts pooled attacker AP from 93.8 to 18.8 on VSPW (person).
-              <a class="bc-link" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page &rarr;</a>
-            </p>
-          </div>
-          <span class="r-status status-review">WACV 2027</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- BUILDING -->
-  <section id="building">
-    <div class="wrap">
-      <p class="sec-label">What I'm building</p>
-      <h2>Startups and<br><em>systems that ship.</em></h2>
-      <p class="sec-desc">Research is one side. The other is building things people actually use.</p>
-
-      <div class="build-grid">
-
-        <!-- Reflara featured -->
-        <div class="build-card featured">
-          <div>
-            <p class="bc-tag">Founder & AI Systems Engineer · Ongoing</p>
-            <h3 class="bc-title">Reflara</h3>
-            <p class="bc-desc">
-              A replay-native execution-intelligence platform for autonomous AI agents.
-              Multi-agent systems are often black boxes — once something breaks, you can't go back.
-              Reflara fixes that by deterministically recording and re-running agent trajectories, reconstructing
-              orchestration state, retrieval influence, and memory evolution over time.
-            </p>
-            <a class="bc-link" href="https://github.com/Reflara-ai/reflara-oss" target="_blank" rel="noopener">View on GitHub →</a>
-          </div>
-          <div>
-            <ul class="bc-details">
-              <li>Four core engines: replay-core, execution-core, mission-core, differential-execution engine</li>
-              <li>Deterministic replay of agent trajectories — every step reproducible</li>
-              <li>Reconstructs orchestration state and memory evolution over time</li>
-              <li>Replay-native regression testing for long-running agent systems</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Qten -->
-        <div class="build-card">
-          <p class="bc-tag">AI Engineer Intern · May 2026 – Present</p>
-          <h3 class="bc-title">Qten.ai</h3>
-          <p class="bc-desc">
-            Building agentic orchestration for grounded conversational content generation at scale.
-            Multi-layer pipelines that verify every claim against retrieved evidence and self-repair low-quality output.
-          </p>
-          <ul class="bc-details">
-            <li>Multi-layer generation pipelines with narrative constraints and deterministic evaluators</li>
-            <li>Modular LLM routing dispatching to reasoning agents over structured latent planning</li>
-            <li>Cuts cost and latency while sustaining high-engagement content generation at scale</li>
-          </ul>
-          <br>
-          <a class="bc-link" href="https://qten.ai" target="_blank" rel="noopener">qten.ai →</a>
-        </div>
-
-        <!-- S6MOD -->
-        <div class="build-card">
-          <p class="bc-tag">Selected project · Jan 2026 – Present</p>
-          <h3 class="bc-title">S6MOD: Adaptive Mixture-of-Experts</h3>
-          <p class="bc-desc">
-            Replaced fixed routing temperature with a regret-driven adaptive controller,
-            letting the model tune its own exploration vs. exploitation as conditions shift.
-          </p>
-          <ul class="bc-details">
-            <li>Reformulated routing as closed-loop feedback driven by loss trends and expert-usage entropy</li>
-            <li>Improved stability in online continual learning under distribution shift</li>
-            <li>Minimal architectural changes — drops straight into S6MOD</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
   <!-- PUBLICATIONS -->
   <section id="publications" class="papers">
     <div class="wrap">
@@ -831,6 +654,16 @@
   booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year      = {2027}
 }</pre>
+        </div>
+      </div>
+
+      <div class="paper">
+        <div class="thumb" data-label="ADVR"><img src="assets/pubs/advr.png" alt="" loading="lazy" onerror="this.remove()"></div>
+        <div class="paper-body">
+          <a class="paper-title" href="https://github.com/kavyanshtyagi/advr-unlearning" target="_blank" rel="noopener">ADVR: Adversarial-Replay Unlearning for Leak-Safe Semantic Segmentation</a><br>
+          <span class="me">Kavyansh Tyagi</span> et al.<br>
+          <span class="venue">Under review, 2026</span>
+          <div class="paper-links"><a href="https://github.com/kavyanshtyagi/advr-unlearning" target="_blank" rel="noopener">code</a></div>
         </div>
       </div>
 
@@ -900,6 +733,183 @@
     </div>
   </section>
 
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="wrap">
+      <p class="sec-label">Research experience</p>
+      <h2>Four labs.<br><em>One mission.</em></h2>
+      <p class="sec-desc">Efficient, robust models that work on real hardware under real constraints. Each project approaches the same core challenge from a different angle.</p>
+
+      <div class="research-list">
+
+        <!-- Sapienza -->
+        <div class="research-item">
+          <span class="r-num">01</span>
+          <div class="r-body">
+            <p class="r-where">Sapienza University of Rome · May 2026 – Present · with Paolo Russo</p>
+            <h3 class="r-title">Physically Grounded SSMs for Hyperspectral Super-Resolution</h3>
+            <p class="r-desc">
+              Proposed <strong>AbSpec-Mamba</strong> and <strong>VolMamba v2</strong>, models that condition selective state transitions
+              on per-pixel material abundance, using prototype-guided reconstruction to recover fine spectral detail
+              without hallucinating physically implausible spectral signatures.
+            </p>
+            <p class="r-desc">
+              Building content-adaptive multidimensional scanning and progressive coarse-to-fine reconstruction
+              so the model restores high-resolution hyperspectral images under severe sensor degradation and spectral corruption.
+            </p>
+          </div>
+          <span class="r-status status-active">Active</span>
+        </div>
+
+        <!-- Tübingen -->
+        <div class="research-item">
+          <span class="r-num">02</span>
+          <div class="r-body">
+            <p class="r-where">University of Tübingen · Sep 2025 – Present · with Andreas Zeigler</p>
+            <h3 class="r-title">CEGNN: Rate as a Feature, Not a Nuisance</h3>
+            <p class="r-desc">
+              Event-camera output rate depends on scene motion, texture and sensor settings. On N-Caltech101 it spans roughly 26&times;
+              across recordings and differs by class. Most event-GNN pipelines either rescale timestamps, discarding the rate before the
+              network sees it, or train for rate invariance and lose accuracy on real recordings.
+            </p>
+            <p class="r-desc">
+              <strong>CEGNN</strong> keeps the rate and uses it: the log event rate drives identity-initialised FiLM layers in a PointNet++ backbone,
+              trained with a two-stage rate curriculum. <strong>+14.0 points</strong> on DVS128 Gesture and <strong>+6.3</strong> on N-Caltech101
+              at natural rates, and <strong>+34 points</strong> on N-Caltech101 under synthetic 1/8&times;&ndash;8&times; speed shifts, for 49K extra parameters.
+              Negative results included. <a class="bc-link" href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">Code &rarr;</a>
+            </p>
+          </div>
+          <span class="r-status status-active">Manuscript prep</span>
+        </div>
+
+        <!-- IIT Ropar -->
+        <div class="research-item">
+          <span class="r-num">03</span>
+          <div class="r-body">
+            <p class="r-where">IIT Ropar · May – Aug 2025 · with Dr. Puneet Goyal</p>
+            <h3 class="r-title">SCAF: Robust Hyperspectral Classification via Optimal Transport</h3>
+            <p class="r-desc">
+              Identified that standard HSI pipelines discard recoverable inter-band correlation by treating bands independently.
+              Recovered this signal using differentiable optimal-transport grouping with balanced Sinkhorn assignments.
+            </p>
+            <p class="r-desc">
+              Per-group Mamba processors isolate sensor noise to individual groups, converting spectral redundancy
+              into a graceful-degradation mechanism, achieving <strong>+11.6% accuracy under 20–30% band dropout</strong>
+              against Transformer baselines.
+            </p>
+          </div>
+          <span class="r-status status-review">Under review</span>
+        </div>
+
+        <!-- NIT KKR -->
+        <div class="research-item">
+          <span class="r-num">04</span>
+          <div class="r-body">
+            <p class="r-where">NIT Kurukshetra · Sep 2024 – May 2025 · with Dr. Vishwas Rathi & Dr. Shweta Sharma</p>
+            <h3 class="r-title">3D Medical Segmentation & Malware Analysis</h3>
+            <p class="r-desc">
+              Built parameter-efficient 3D segmentation models targeting deployability on memory-constrained hardware,
+              work that became LightMedSeg and RefineFormer3D. Concurrently developed hybrid frameworks for ransomware
+              detection combining static binary features with NLP-based code representations, leading to the ICDAM 2025 paper.
+            </p>
+          </div>
+          <span class="r-status status-pub">2 papers</span>
+        </div>
+
+        <!-- Unlearning -->
+        <div class="research-item">
+          <span class="r-num">05</span>
+          <div class="r-body">
+            <p class="r-where">Machine unlearning · 2026 · PACE with Paolo Russo</p>
+            <h3 class="r-title">Privacy Leakage in Class Unlearning: ADVR &amp; PACE</h3>
+            <p class="r-desc">
+              Segmentation unlearning that merely relabels a class leaves a class-shaped hole in the model's output, and a learned attacker
+              can reconstruct the forgotten mask from the output alone. <strong>ADVR</strong> (adversarial silhouette removal plus retain replay)
+              is the only method leak-safe on both output and feature surfaces across ADE20K and Cityscapes, while keeping more retained-class
+              accuracy than the baselines. <a class="bc-link" href="https://github.com/kavyanshtyagi/advr-unlearning" target="_blank" rel="noopener">Code &rarr;</a>
+            </p>
+            <p class="r-desc">
+              <strong>PACE</strong> extends the audit to video: averaging a model's output over a ~2-second clip recovers the forgotten class from every
+              published baseline tested, and a time-shuffled control shows that cross-frame redundancy, not trajectory, carries the signal.
+              A permutation-invariant pooled adversary cuts pooled attacker AP from 93.8 to 18.8 on VSPW (person).
+              <a class="bc-link" href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page &rarr;</a>
+            </p>
+          </div>
+          <span class="r-status status-review">WACV 2027</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BUILDING -->
+  <section id="building">
+    <div class="wrap">
+      <p class="sec-label">What I'm building</p>
+      <h2>Startups and<br><em>systems that ship.</em></h2>
+      <p class="sec-desc">Research is one side. The other is building things people actually use.</p>
+
+      <div class="build-grid">
+
+        <!-- Reflara featured -->
+        <div class="build-card featured">
+          <div>
+            <p class="bc-tag">Founder & AI Systems Engineer · Ongoing</p>
+            <h3 class="bc-title">Reflara</h3>
+            <p class="bc-desc">
+              A replay-native execution-intelligence platform for autonomous AI agents.
+              Multi-agent systems are often black boxes. Once something breaks, you can't go back.
+              Reflara fixes that by deterministically recording and re-running agent trajectories, reconstructing
+              orchestration state, retrieval influence, and memory evolution over time.
+            </p>
+            <a class="bc-link" href="https://github.com/Reflara-ai/reflara-oss" target="_blank" rel="noopener">View on GitHub →</a>
+          </div>
+          <div>
+            <ul class="bc-details">
+              <li>Four core engines: replay-core, execution-core, mission-core, differential-execution engine</li>
+              <li>Deterministic replay of agent trajectories, every step reproducible</li>
+              <li>Reconstructs orchestration state and memory evolution over time</li>
+              <li>Replay-native regression testing for long-running agent systems</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Qten -->
+        <div class="build-card">
+          <p class="bc-tag">AI Engineer Intern · May 2026 – Present</p>
+          <h3 class="bc-title">Qten.ai</h3>
+          <p class="bc-desc">
+            Building agentic orchestration for grounded conversational content generation at scale.
+            Multi-layer pipelines that verify every claim against retrieved evidence and self-repair low-quality output.
+          </p>
+          <ul class="bc-details">
+            <li>Multi-layer generation pipelines with narrative constraints and deterministic evaluators</li>
+            <li>Modular LLM routing dispatching to reasoning agents over structured latent planning</li>
+            <li>Cuts cost and latency while sustaining high-engagement content generation at scale</li>
+          </ul>
+          <br>
+          <a class="bc-link" href="https://qten.ai" target="_blank" rel="noopener">qten.ai →</a>
+        </div>
+
+        <!-- S6MOD -->
+        <div class="build-card">
+          <p class="bc-tag">Selected project · Jan 2026 – Present</p>
+          <h3 class="bc-title">S6MOD: Adaptive Mixture-of-Experts</h3>
+          <p class="bc-desc">
+            Replaced fixed routing temperature with a regret-driven adaptive controller,
+            letting the model tune its own exploration vs. exploitation as conditions shift.
+          </p>
+          <ul class="bc-details">
+            <li>Reformulated routing as closed-loop feedback driven by loss trends and expert-usage entropy</li>
+            <li>Improved stability in online continual learning under distribution shift</li>
+            <li>Minimal architectural changes, drops straight into S6MOD</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- OPEN SOURCE -->
   <section id="oss">
     <div class="wrap">
@@ -964,7 +974,7 @@
           <h2>Let's collaborate.<br><em>Research or startup.</em></h2>
           <p>
             I'm always interested in conversations about research, collaborations, or ideas worth pursuing.
-            Drop me a message — I read everything.
+            Drop me a message. I read everything.
           </p>
           <div class="hero-links">
             <a class="pill solid" href="mailto:kavyansh.tyagi7@gmail.com">✉ Email me</a>
