@@ -16,6 +16,23 @@
     <meta name="twitter:description" content="Efficient models for real data: SSMs, hyperspectral and event-based vision, machine unlearning.">
     <meta property="og:url" content="https://kavyanshtyagi.github.io/">
     <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kavyansh Tyagi",
+      "url": "https://kavyanshtyagi.github.io/",
+      "jobTitle": "ML Researcher",
+      "affiliation": {"@type": "CollegeOrUniversity", "name": "National Institute of Technology Kurukshetra"},
+      "email": "mailto:kavyansh.tyagi7@gmail.com",
+      "sameAs": [
+        "https://github.com/kavyanshtyagi",
+        "https://scholar.google.com/citations?user=9Kg8eQUAAAAJ",
+        "https://linkedin.com/in/kavyansh-tyagi"
+      ],
+      "knowsAbout": ["State space models", "Hyperspectral vision", "Event-based vision", "Machine unlearning", "3D medical image segmentation"]
+    }
+    </script>
     <meta name="google-site-verification" content="QWAa_Dz7M0RUuajD8eg3EcmLb9b5wv7v12RM3lVyMhc">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -522,6 +539,16 @@
     .delay-3 { animation-delay: 0.34s; }
     .delay-4 { animation-delay: 0.46s; }
 
+    /* ── LATEST ── */
+    .hero-news { margin-top: 44px; max-width: 700px; }
+    .hero-news h2 { font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); font-weight: 500; margin-bottom: 10px; }
+    .hero-news ul { list-style: none; }
+    .hero-news li { position: relative; font-size: 15px; line-height: 1.6; color: var(--ink2); padding: 6px 0 6px 88px; border-top: 1px solid var(--rule); }
+    .hero-news li:last-child { border-bottom: 1px solid var(--rule); }
+    .hero-news .when { position: absolute; left: 0; color: var(--ink3); font-size: 13px; }
+    .hero-news a { color: var(--blue); font-weight: 500; }
+    .hero-news a:hover { text-decoration: underline; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .wrap { padding: 0 20px; }
@@ -575,6 +602,14 @@
       <a class="pill" href="https://linkedin.com/in/kavyansh-tyagi" target="_blank" rel="noopener">LinkedIn</a>
       <a class="pill" href="https://scholar.google.com/citations?user=9Kg8eQUAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
       <a class="pill" href="tel:+919311146823">+91 93111 46823</a>
+    </div>
+    <div class="hero-news fade-up delay-4">
+      <h2>Latest</h2>
+      <ul>
+        <li><span class="when">Oct 2026</span><a href="https://arxiv.org/abs/2610.27982" target="_blank" rel="noopener">PACE</a> is on arXiv (WACV 2027): redundancy, not trajectory, carries the privacy leak in video unlearning. <a href="https://kavyanshtyagi.github.io/PACE-Redundancy-Not-Trajectory-Carries-the-Privacy-Leak-in-Video-Unlearning/" target="_blank" rel="noopener">Project page</a></li>
+        <li><span class="when">Oct 2026</span><a href="https://arxiv.org/abs/2610.26933" target="_blank" rel="noopener">CEGNN</a> is on arXiv (ACCV 2026 AECV workshop): event rate as a feature for event-camera GNNs.</li>
+        <li><span class="when">Mar 2026</span><a href="https://arxiv.org/abs/2603.07228" target="_blank" rel="noopener">LightMedSeg</a> (CVPR Workshops 2026): 3D medical segmentation in 0.48M parameters.</li>
+      </ul>
     </div>
   </div>
 
@@ -796,7 +831,7 @@
             <p class="r-desc">
               <strong>CEGNN</strong> keeps the rate and uses it: the log event rate drives identity-initialised FiLM layers in a PointNet++ backbone,
               trained with a two-stage rate curriculum. <strong>+14.0 points</strong> on DVS128 Gesture and <strong>+6.3</strong> on N-Caltech101
-              at natural rates, and <strong>+34 points</strong> on N-Caltech101 under synthetic 1/8&times; to 8&times; speed shifts, for 49K extra parameters.
+              at natural rates, and <strong>+34 points</strong> on N-Caltech101 under synthetic 1/8&times; to 8&times; speed shifts.
               Negative results included. <a class="bc-link" href="https://arxiv.org/abs/2610.26933" target="_blank" rel="noopener">arXiv &rarr;</a> <a class="bc-link" href="https://github.com/kavyanshtyagi/CE-GNN" target="_blank" rel="noopener">Code &rarr;</a>
             </p>
           </div>
